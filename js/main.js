@@ -270,7 +270,7 @@ function initContactForm() {
 
     setTimeout(() => {
       feedback.className = 'form-feedback success';
-      feedback.innerHTML = `<strong>Thank you, ${name}!</strong> Your message has been sent successfully. Parul will get back to you within 2 hours.`;
+      feedback.innerHTML = `<strong>Thank you, ${name}!</strong> Your message has been received. Parul will get back to you at ${email} or via phone within 2 hours.`;
       form.reset();
       submitBtn.disabled = false;
       submitBtn.innerHTML = originalText;
@@ -325,8 +325,11 @@ function renderDemoModal(projectKey) {
   if (projectKey === 'urban-brew') {
     modalArea.innerHTML = `
       <div class="demo-modal-header">
-        <h2>☕ Urban Brew Cafe - Live Interactive Preview</h2>
+        <h2>☕ Urban Brew Cafe</h2>
         <p>Premium cafe website featuring online menu, table reservation simulator, and Google Maps integration.</p>
+        <a href="https://cafe-1-beta.vercel.app/" target="_blank" class="btn btn-primary btn-sm" style="margin-top:1rem;">
+          <i data-lucide="external-link"></i> Open Live Website (cafe-1-beta.vercel.app)
+        </a>
       </div>
       
       <div style="background: #111422; padding: 1.5rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);">
@@ -363,8 +366,11 @@ function renderDemoModal(projectKey) {
   } else if (projectKey === 'titan-fitness') {
     modalArea.innerHTML = `
       <div class="demo-modal-header">
-        <h2>🏋️ Titan Fitness Club - Live Interactive Preview</h2>
+        <h2>🏋️ Titan Fitness Club</h2>
         <p>High-energy gym portal featuring membership plans, trainer directory & live interactive BMI Engine.</p>
+        <a href="https://gym-mu-drab.vercel.app/" target="_blank" class="btn btn-primary btn-sm" style="margin-top:1rem;">
+          <i data-lucide="external-link"></i> Open Live Website (gym-mu-drab.vercel.app)
+        </a>
       </div>
 
       <div class="bmi-calculator-box">
@@ -392,8 +398,11 @@ function renderDemoModal(projectKey) {
   } else if (projectKey === 'impact-coaching') {
     modalArea.innerHTML = `
       <div class="demo-modal-header">
-        <h2>🎓 Impact Coaching Institute - Live Interactive Preview</h2>
+        <h2>🎓 Impact Coaching Institute</h2>
         <p>Full academic portal with course syllabus finder and student application test.</p>
+        <a href="https://www.impactinstitute.space" target="_blank" class="btn btn-primary btn-sm" style="margin-top:1rem;">
+          <i data-lucide="external-link"></i> Open Live Website (impactinstitute.space)
+        </a>
       </div>
 
       <div style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);">
@@ -414,8 +423,11 @@ function renderDemoModal(projectKey) {
   } else if (projectKey === 'knowledge-library') {
     modalArea.innerHTML = `
       <div class="demo-modal-header">
-        <h2>📚 Knowledge Library - Live Interactive Preview</h2>
+        <h2>📚 Knowledge Library</h2>
         <p>Digital catalog search & membership tier calculator.</p>
+        <a href="https://library-neon-five.vercel.app/" target="_blank" class="btn btn-primary btn-sm" style="margin-top:1rem;">
+          <i data-lucide="external-link"></i> Open Live Website (library-neon-five.vercel.app)
+        </a>
       </div>
 
       <div style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);">
