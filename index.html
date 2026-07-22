@@ -78,6 +78,10 @@
       </ul>
 
       <div class="nav-actions">
+        <button id="open-admin-btn" class="btn btn-glass btn-sm admin-trigger-btn" title="Admin Portal">
+          <i data-lucide="lock"></i>
+          <span>Admin</span>
+        </button>
         <a href="#contact" class="btn btn-primary btn-nav">
           <span>Hire Me</span>
           <i data-lucide="arrow-up-right"></i>
@@ -98,11 +102,11 @@
           <span>Available for New Projects & Freelance Contracts</span>
         </div>
 
-        <h1 class="hero-title fade-up delay-1">
+        <h1 class="hero-title fade-up delay-1" id="hero-title-text">
           I Build <span class="gradient-text">Modern Websites</span> That Help Businesses Grow Online.
         </h1>
 
-        <p class="hero-subtitle fade-up delay-2">
+        <p class="hero-subtitle fade-up delay-2" id="hero-subtitle-text">
           High-Converting Business Websites for Digital Marketing Agencies, Business Owners, Startups and Local Businesses.
         </p>
 
@@ -120,22 +124,22 @@
         <!-- Animated Stats Counter Bar -->
         <div class="hero-stats glass-card fade-up delay-4">
           <div class="stat-item">
-            <div class="stat-number"><span class="counter" data-target="50">0</span>+</div>
+            <div class="stat-number"><span class="counter" id="stat-projects-num" data-target="50">0</span>+</div>
             <div class="stat-label">Projects Completed</div>
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
-            <div class="stat-number"><span class="counter" data-target="99">0</span>.8%</div>
+            <div class="stat-number"><span class="counter" id="stat-satisfaction-num" data-target="99">0</span>.8%</div>
             <div class="stat-label">Client Satisfaction</div>
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
-            <div class="stat-number"><span class="counter" data-target="3">0</span>x</div>
+            <div class="stat-number"><span class="counter" id="stat-conversion-num" data-target="3">0</span>x</div>
             <div class="stat-label">Average Conversion Boost</div>
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
-            <div class="stat-number"><span class="counter" data-target="4">0</span>+</div>
+            <div class="stat-number"><span class="counter" id="stat-experience-num" data-target="4">0</span>+</div>
             <div class="stat-label">Years Experience</div>
           </div>
         </div>
@@ -157,9 +161,9 @@
               <div class="avatar-initials">PR</div>
             </div>
             <div class="about-bio">
-              <h3>Hello, I'm <span class="gradient-text">Parul Rajawat</span></h3>
-              <p class="tagline-badge">Building High-Converting Business Websites</p>
-              <p class="bio-text">
+              <h3>Hello, I'm <span class="gradient-text" id="about-name-text">Parul Rajawat</span></h3>
+              <p class="tagline-badge" id="about-tagline-text">Building High-Converting Business Websites</p>
+              <p class="bio-text" id="about-bio-text">
                 I specialize in building fast, modern, and fully responsive websites tailored specifically for local businesses, digital marketing agencies, and scaling startups. By leveraging cutting-edge web technologies like <strong>React.js, Next.js, HTML5, CSS3, JavaScript (ES6+), and Tailwind CSS</strong>, I transform brand visions into high-converting digital storefronts.
               </p>
               <p class="bio-text">
@@ -873,10 +877,9 @@
             </div>
           </div>
 
-          <!-- Professional Contact Form -> Direct Email Dispatch to payalrajawat789@gmail.com -->
+          <!-- Professional Contact Form -> Direct Email & Saved to Admin Requests -->
           <div class="contact-form-card glass-card fade-up delay-1">
             <form id="contact-form" class="contact-form">
-              <!-- Hidden form config for email service -->
               <input type="hidden" name="_subject" value="New Hire Request from Portfolio Website!" />
               
               <div class="form-group">
@@ -939,6 +942,7 @@
           <li><a href="#services">Services</a></li>
           <li><a href="#tech-stack">Tech Stack</a></li>
           <li><a href="#contact">Contact</a></li>
+          <li><a href="#" id="footer-admin-link" style="color: var(--secondary-accent);">Admin Panel</a></li>
         </ul>
       </div>
 
@@ -973,6 +977,122 @@
       <div id="modal-content-area" class="modal-content-area">
         <!-- Content dynamically injected via JavaScript -->
       </div>
+    </div>
+  </div>
+
+  <!-- ADMIN LOGIN MODAL -->
+  <div id="admin-login-modal" class="modal-backdrop">
+    <div class="modal-card glass-card admin-login-card">
+      <button id="close-admin-login-btn" class="close-modal-btn" aria-label="Close admin login">
+        <i data-lucide="x"></i>
+      </button>
+
+      <div class="demo-modal-header text-center">
+        <h2>🔒 Admin Portal Login</h2>
+        <p>Enter your credentials to manage client inquiries and edit website content.</p>
+      </div>
+
+      <form id="admin-login-form" class="contact-form" style="margin-top: 1.5rem;">
+        <div class="form-group">
+          <label for="admin-email">Admin Email Address</label>
+          <input type="email" id="admin-email" placeholder="payalrajawat789@gmail.com" required />
+        </div>
+
+        <div class="form-group">
+          <label for="admin-password">Password</label>
+          <input type="password" id="admin-password" placeholder="Enter your password" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top: 0.5rem;">
+          <i data-lucide="log-in"></i> Login to Admin Panel
+        </button>
+
+        <div id="admin-login-feedback" class="form-feedback"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ADMIN CONTROL DASHBOARD MODAL -->
+  <div id="admin-dashboard-modal" class="modal-backdrop">
+    <div class="modal-card glass-card admin-dashboard-card">
+      <div class="admin-dashboard-header">
+        <div>
+          <h2>⚡ Parul Rajawat - Admin Dashboard</h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Manage Client Inquiries & Edit Live Portfolio Content</p>
+        </div>
+        <div class="admin-header-actions">
+          <button id="admin-logout-btn" class="btn btn-glass btn-sm">
+            <i data-lucide="log-out"></i> Logout
+          </button>
+          <button id="close-admin-dashboard-btn" class="close-modal-btn" style="position: static;" aria-label="Close dashboard">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Admin Tabs -->
+      <div class="admin-tabs">
+        <button class="admin-tab-btn active" data-tab="tab-requests">
+          <i data-lucide="inbox"></i> Client Inquiries (<span id="inquiry-count-badge">0</span>)
+        </button>
+        <button class="admin-tab-btn" data-tab="tab-content">
+          <i data-lucide="edit-3"></i> Edit Live Content
+        </button>
+      </div>
+
+      <!-- Tab 1: Client Inquiries View -->
+      <div id="tab-requests" class="admin-tab-content active">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+          <h4>Received Hire Me Requests</h4>
+          <button id="clear-all-inquiries-btn" class="btn btn-glass btn-sm" style="color:#f87171; border-color:rgba(239,68,68,0.3);">
+            <i data-lucide="trash-2"></i> Clear All
+          </button>
+        </div>
+        <div id="inquiries-list-container" class="inquiries-list">
+          <!-- Inquiries dynamically rendered here -->
+        </div>
+      </div>
+
+      <!-- Tab 2: Live Content Editor -->
+      <div id="tab-content" class="admin-tab-content">
+        <form id="admin-content-form" class="contact-form" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+          <div class="form-group" style="grid-column: span 2;">
+            <label for="edit-hero-title">Hero Headline Title</label>
+            <input type="text" id="edit-hero-title" value="I Build Modern Websites That Help Businesses Grow Online." />
+          </div>
+
+          <div class="form-group" style="grid-column: span 2;">
+            <label for="edit-hero-subtitle">Hero Subtitle</label>
+            <textarea id="edit-hero-subtitle" rows="2">High-Converting Business Websites for Digital Marketing Agencies, Business Owners, Startups and Local Businesses.</textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="edit-projects-count">Completed Projects Count</label>
+            <input type="number" id="edit-projects-count" value="50" />
+          </div>
+
+          <div class="form-group">
+            <label for="edit-experience-years">Years Experience</label>
+            <input type="number" id="edit-experience-years" value="4" />
+          </div>
+
+          <div class="form-group" style="grid-column: span 2;">
+            <label for="edit-about-bio">About Me Narrative</label>
+            <textarea id="edit-about-bio" rows="4">I specialize in building fast, modern, and fully responsive websites tailored specifically for local businesses, digital marketing agencies, and scaling startups. By leveraging cutting-edge web technologies like React.js, Next.js, HTML5, CSS3, JavaScript (ES6+), and Tailwind CSS, I transform brand visions into high-converting digital storefronts.</textarea>
+          </div>
+
+          <div style="grid-column: span 2; display:flex; gap:1rem; margin-top:0.5rem;">
+            <button type="submit" class="btn btn-primary btn-block">
+              <i data-lucide="save"></i> Save & Update Live Website
+            </button>
+            <button type="button" id="reset-content-btn" class="btn btn-glass btn-block">
+              Reset to Defaults
+            </button>
+          </div>
+          <div id="content-save-feedback" class="form-feedback" style="grid-column: span 2;"></div>
+        </form>
+      </div>
+
     </div>
   </div>
 

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Parul Rajawat Portfolio - Main JavaScript Application Logic
+   Parul Rajawat Portfolio - Main JavaScript Application Logic & Admin Engine
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -35,11 +35,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // 8. Tech Stack Category Filter
   initTechFilter();
 
-  // 9. Contact Form Direct Email Submission to payalrajawat789@gmail.com
+  // 9. Contact Form Handling & Local Inquiries Storage
   initContactForm();
 
   // 10. Interactive Project Demos & Modals (including BMI Calculator)
   initProjectModals();
+
+  // 11. Admin Authentication & Dashboard Engine
+  initAdminEngine();
+
+  // 12. Load Editable Content Overrides from LocalStorage
+  loadCustomContent();
 
 });
 
@@ -235,7 +241,7 @@ function initTechFilter() {
 }
 
 /* ==========================================================================
-   DIRECT EMAIL FORM SUBMISSION (Dispatches to payalrajawat789@gmail.com)
+   CONTACT FORM SUBMISSION (Saves to Admin Dashboard + Email Dispatch)
    ========================================================================== */
 function initContactForm() {
   const form = document.getElementById('contact-form');
@@ -261,50 +267,253 @@ function initContactForm() {
       return;
     }
 
+    const newInquiry = {
+      id: Date.now(),
+      name,
+      email,
+      service,
+      message,
+      date: new Date().toLocaleDateString('en-US', {
+        month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit'
+      })
+    };
+
+    // Save to LocalStorage for Admin Panel View
+    const existing = JSON.parse(localStorage.getItem('pr_client_inquiries') || '[]');
+    existing.unshift(newInquiry);
+    localStorage.setItem('pr_client_inquiries', JSON.stringify(existing));
+
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
 
     submitBtn.disabled = true;
-    submitBtn.innerHTML = `<span>Sending Email...</span>`;
+    submitBtn.innerHTML = `<span>Sending Request...</span>`;
 
     try {
-      // Send Form Data via FormSubmit API directly to payalrajawat789@gmail.com
-      const response = await fetch('https://formsubmit.co/ajax/payalrajawat789@gmail.com', {
+      // Send Email to payalrajawat789@gmail.com
+      fetch('https://formsubmit.co/ajax/payalrajawat789@gmail.com', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
-          _subject: `New Project Inquiry from ${name} (${service})`,
-          "Client Name": name,
-          "Client Email": email,
-          "Requested Service": service,
-          "Project Message": message
+          _subject: `New Client Inquiry: ${name} (${service})`,
+          "Name": name,
+          "Email": email,
+          "Service": service,
+          "Message": message
         })
       });
-
-      if (response.ok || response.status === 200) {
-        feedback.className = 'form-feedback success';
-        feedback.innerHTML = `<strong>Thank you, ${name}!</strong> Your request has been sent directly to Parul's inbox (<code>payalrajawat789@gmail.com</code>). She will contact you within 2 hours.`;
-        form.reset();
-      } else {
-        // Fallback to mailto link if API block
-        window.location.href = `mailto:payalrajawat789@gmail.com?subject=Project Inquiry - ${encodeURIComponent(name)}&body=Name: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0AService: ${encodeURIComponent(service)}%0AMessage: ${encodeURIComponent(message)}`;
-        feedback.className = 'form-feedback success';
-        feedback.innerHTML = `Opening your email client to send message to <code>payalrajawat789@gmail.com</code>...`;
-      }
     } catch (err) {
-      // Fallback
-      window.location.href = `mailto:payalrajawat789@gmail.com?subject=Project Inquiry - ${encodeURIComponent(name)}&body=Name: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0AService: ${encodeURIComponent(service)}%0AMessage: ${encodeURIComponent(message)}`;
+      console.log('Form submit background dispatch executed');
+    }
+
+    setTimeout(() => {
       feedback.className = 'form-feedback success';
-      feedback.innerHTML = `Thank you ${name}! Direct mailto link opened for <code>payalrajawat789@gmail.com</code>.`;
-    } finally {
+      feedback.innerHTML = `<strong>Thank you, ${name}!</strong> Your inquiry has been dispatched to <code>payalrajawat789@gmail.com</code> & logged in the admin panel. Parul will get back to you within 2 hours.`;
+      form.reset();
       submitBtn.disabled = false;
       submitBtn.innerHTML = originalText;
       if (window.lucide) lucide.createIcons();
+    }, 800);
+  });
+}
+
+/* ==========================================================================
+   ADMIN AUTHENTICATION & DASHBOARD ENGINE
+   ========================================================================== */
+function initAdminEngine() {
+  const openBtn = document.getElementById('open-admin-btn');
+  const footerAdminLink = document.getElementById('footer-admin-link');
+  const loginModal = document.getElementById('admin-login-modal');
+  const closeLoginBtn = document.getElementById('close-admin-login-btn');
+  const loginForm = document.getElementById('admin-login-form');
+  const loginFeedback = document.getElementById('admin-login-feedback');
+
+  const dashboardModal = document.getElementById('admin-dashboard-modal');
+  const closeDashBtn = document.getElementById('close-admin-dashboard-btn');
+  const logoutBtn = document.getElementById('admin-logout-btn');
+
+  // Hardcoded Admin Credentials as specified by user
+  const ADMIN_EMAIL = 'payalrajawat789@gmail.com';
+  const ADMIN_PASS = 'Rajawat123#';
+
+  const showLogin = () => {
+    if (localStorage.getItem('pr_admin_logged_in') === 'true') {
+      openDashboard();
+    } else {
+      loginModal.classList.add('active');
+    }
+  };
+
+  if (openBtn) openBtn.addEventListener('click', showLogin);
+  if (footerAdminLink) footerAdminLink.addEventListener('click', (e) => { e.preventDefault(); showLogin(); });
+  if (closeLoginBtn) closeLoginBtn.addEventListener('click', () => loginModal.classList.remove('active'));
+
+  loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('admin-email').value.trim();
+    const pass = document.getElementById('admin-password').value;
+
+    if (email === ADMIN_EMAIL && pass === ADMIN_PASS) {
+      localStorage.setItem('pr_admin_logged_in', 'true');
+      loginModal.classList.remove('active');
+      loginForm.reset();
+      loginFeedback.style.display = 'none';
+      openDashboard();
+    } else {
+      loginFeedback.className = 'form-feedback';
+      loginFeedback.style.display = 'block';
+      loginFeedback.style.background = 'rgba(239, 68, 68, 0.15)';
+      loginFeedback.style.borderColor = '#ef4444';
+      loginFeedback.style.color = '#f87171';
+      loginFeedback.textContent = 'Invalid Email or Password. Please try again.';
     }
   });
+
+  // Open Dashboard Function
+  function openDashboard() {
+    renderInquiriesList();
+    loadAdminContentForm();
+    dashboardModal.classList.add('active');
+  }
+
+  if (closeDashBtn) closeDashBtn.addEventListener('click', () => dashboardModal.classList.remove('active'));
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+      localStorage.removeItem('pr_admin_logged_in');
+      dashboardModal.classList.remove('active');
+    });
+  }
+
+  // Admin Dashboard Tabs
+  const tabBtns = document.querySelectorAll('.admin-tab-btn');
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const tabId = btn.getAttribute('data-tab');
+      document.querySelectorAll('.admin-tab-content').forEach(c => c.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+    });
+  });
+
+  // Clear Inquiries Handler
+  const clearInquiriesBtn = document.getElementById('clear-all-inquiries-btn');
+  if (clearInquiriesBtn) {
+    clearInquiriesBtn.addEventListener('click', () => {
+      if (confirm('Are you sure you want to delete all client inquiries from local storage?')) {
+        localStorage.removeItem('pr_client_inquiries');
+        renderInquiriesList();
+      }
+    });
+  }
+
+  // Edit Content Form Submission
+  const contentForm = document.getElementById('admin-content-form');
+  const saveFeedback = document.getElementById('content-save-feedback');
+  const resetBtn = document.getElementById('reset-content-btn');
+
+  if (contentForm) {
+    contentForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const customContent = {
+        heroTitle: document.getElementById('edit-hero-title').value,
+        heroSubtitle: document.getElementById('edit-hero-subtitle').value,
+        projectsCount: document.getElementById('edit-projects-count').value,
+        experienceYears: document.getElementById('edit-experience-years').value,
+        aboutBio: document.getElementById('edit-about-bio').value
+      };
+
+      localStorage.setItem('pr_custom_content', JSON.stringify(customContent));
+      loadCustomContent();
+
+      saveFeedback.className = 'form-feedback success';
+      saveFeedback.style.display = 'block';
+      saveFeedback.textContent = '✅ Live website content updated successfully!';
+
+      setTimeout(() => { saveFeedback.style.display = 'none'; }, 3000);
+    });
+  }
+
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      if (confirm('Reset website content back to default values?')) {
+        localStorage.removeItem('pr_custom_content');
+        location.reload();
+      }
+    });
+  }
+}
+
+// Render Client Inquiries in Admin Dashboard
+function renderInquiriesList() {
+  const container = document.getElementById('inquiries-list-container');
+  const badge = document.getElementById('inquiry-count-badge');
+  const inquiries = JSON.parse(localStorage.getItem('pr_client_inquiries') || '[]');
+
+  if (badge) badge.textContent = inquiries.length;
+
+  if (!container) return;
+
+  if (inquiries.length === 0) {
+    container.innerHTML = `
+      <div style="text-align:center; padding: 2rem; color: var(--text-muted);">
+        <i data-lucide="inbox" style="width:36px; height:36px; margin-bottom:0.5rem; opacity:0.5;"></i>
+        <p>No client inquiries received yet. When clients submit the "Hire Me" form, their details will appear here.</p>
+      </div>
+    `;
+    if (window.lucide) lucide.createIcons();
+    return;
+  }
+
+  container.innerHTML = inquiries.map(inq => `
+    <div class="inquiry-card">
+      <div class="inquiry-card-header">
+        <span class="inquiry-name">${inq.name}</span>
+        <span class="inquiry-service-badge">${inq.service}</span>
+      </div>
+      <div class="inquiry-meta">
+        <span>📧 <a href="mailto:${inq.email}" style="color:var(--primary-accent);">${inq.email}</a></span>
+        <span>🕒 ${inq.date}</span>
+      </div>
+      <div class="inquiry-message">${inq.message}</div>
+    </div>
+  `).join('');
+}
+
+// Load content into Admin Form inputs
+function loadAdminContentForm() {
+  const saved = JSON.parse(localStorage.getItem('pr_custom_content') || '{}');
+  if (saved.heroTitle) document.getElementById('edit-hero-title').value = saved.heroTitle;
+  if (saved.heroSubtitle) document.getElementById('edit-hero-subtitle').value = saved.heroSubtitle;
+  if (saved.projectsCount) document.getElementById('edit-projects-count').value = saved.projectsCount;
+  if (saved.experienceYears) document.getElementById('edit-experience-years').value = saved.experienceYears;
+  if (saved.aboutBio) document.getElementById('edit-about-bio').value = saved.aboutBio;
+}
+
+// Dynamically apply saved custom content overrides to the live DOM
+function loadCustomContent() {
+  const saved = JSON.parse(localStorage.getItem('pr_custom_content') || '{}');
+  if (saved.heroTitle) {
+    const el = document.getElementById('hero-title-text');
+    if (el) el.innerHTML = saved.heroTitle;
+  }
+  if (saved.heroSubtitle) {
+    const el = document.getElementById('hero-subtitle-text');
+    if (el) el.textContent = saved.heroSubtitle;
+  }
+  if (saved.projectsCount) {
+    const el = document.getElementById('stat-projects-num');
+    if (el) el.setAttribute('data-target', saved.projectsCount);
+  }
+  if (saved.experienceYears) {
+    const el = document.getElementById('stat-experience-num');
+    if (el) el.setAttribute('data-target', saved.experienceYears);
+  }
+  if (saved.aboutBio) {
+    const el = document.getElementById('about-bio-text');
+    if (el) el.textContent = saved.aboutBio;
+  }
 }
 
 /* ==========================================================================

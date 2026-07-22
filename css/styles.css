@@ -1520,7 +1520,7 @@ button, input, select, textarea {
   color: var(--secondary-accent);
 }
 
-/* 16. Interactive Project Modal */
+/* 16. Interactive Project Modal & Admin Panel Styles */
 .modal-backdrop {
   position: fixed;
   inset: 0;
@@ -1550,6 +1550,120 @@ button, input, select, textarea {
   position: relative;
   background: rgba(14, 18, 30, 0.95);
   border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.admin-login-card {
+  max-width: 440px;
+}
+
+.admin-dashboard-card {
+  max-width: 980px;
+}
+
+.admin-dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--glass-border);
+  margin-bottom: 1.5rem;
+}
+
+.admin-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 0.5rem;
+}
+
+.admin-tab-btn {
+  padding: 0.6rem 1.25rem;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all var(--transition-fast);
+}
+
+.admin-tab-btn.active {
+  background: rgba(99, 102, 241, 0.2);
+  color: var(--primary-accent);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+.admin-tab-content {
+  display: none;
+}
+
+.admin-tab-content.active {
+  display: block;
+}
+
+.inquiries-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+.inquiry-card {
+  padding: 1.25rem;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inquiry-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inquiry-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.inquiry-service-badge {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  background: rgba(6, 182, 212, 0.15);
+  color: var(--secondary-accent);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+}
+
+.inquiry-meta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  display: flex;
+  gap: 1.5rem;
+}
+
+.inquiry-message {
+  font-size: 0.95rem;
+  color: var(--text-main);
+  background: rgba(0, 0, 0, 0.4);
+  padding: 0.85rem;
+  border-radius: var(--radius-sm);
+  margin-top: 0.25rem;
 }
 
 .close-modal-btn {
@@ -1694,7 +1808,6 @@ button, input, select, textarea {
 
   .mobile-toggle { display: block; }
   .btn-nav span { display: none; }
-  .btn-pdf-nav { padding: 0.4rem 0.75rem; font-size: 0.8rem; }
 
   .hero-section { padding-top: 8rem; padding-bottom: 3.5rem; }
   .hero-title { font-size: 2.25rem; }
@@ -1738,46 +1851,4 @@ button, input, select, textarea {
   .main-about { padding: 1.25rem; }
   .about-bio h3 { font-size: 1.5rem; }
   .section-title { font-size: 2rem; }
-}
-
-/* 19. Clean Print & PDF Download Layout */
-@media print {
-  body {
-    background: #ffffff !important;
-    color: #111827 !important;
-    font-family: sans-serif;
-  }
-
-  .navbar-wrapper, .bg-canvas, .ambient-orb, .loader-overlay,
-  .hero-ctas, .project-actions, .mobile-toggle, .back-to-top,
-  .tech-filter-buttons, .contact-form-card, .project-overlay, .modal-backdrop {
-    display: none !important;
-  }
-
-  .glass-card {
-    background: #ffffff !important;
-    border: 1px solid #e5e7eb !important;
-    box-shadow: none !important;
-    color: #111827 !important;
-    backdrop-filter: none !important;
-  }
-
-  .gradient-text, .stat-number, .badge-num {
-    background: none !important;
-    -webkit-text-fill-color: #111827 !important;
-    color: #111827 !important;
-  }
-
-  .section {
-    padding: 2rem 0 !important;
-  }
-
-  .hero-title {
-    font-size: 2.2rem !important;
-    color: #111827 !important;
-  }
-
-  .project-card, .service-card, .tech-card, .why-card, .step-card {
-    page-break-inside: avoid;
-  }
 }
