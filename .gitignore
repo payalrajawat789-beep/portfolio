@@ -1,8 +1,6 @@
-# Dependencies & build outputs
+# Dependencies & local node
 node_modules/
 .next/
-dist/
-build/
 out/
 
 # Environment & local secrets
