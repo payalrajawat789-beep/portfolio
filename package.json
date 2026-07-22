@@ -1,0 +1,9 @@
+{
+  "name": "parul-rajawat-portfolio",
+  "version": "1.0.0",
+  "description": "Modern Apple-inspired portfolio for Parul Rajawat",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'Static site build complete'"
+  }
+}
