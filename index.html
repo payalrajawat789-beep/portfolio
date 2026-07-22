@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parul Rajawat | Building High-Converting Business Websites</title>
+  <meta name="description" content="Freelance Website Developer specializing in fast, modern, responsive websites for local businesses, startups, and agencies using React.js, Next.js, HTML, CSS, JavaScript and Tailwind CSS." />
+  <meta name="keywords" content="Parul Rajawat, Freelance Web Developer, Web Design, Next.js Developer, React Developer, Business Websites, Landing Pages" />
+  <meta name="author" content="Parul Rajawat" />
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Parul Rajawat | Building High-Converting Business Websites" />
+  <meta property="og:description" content="I build modern, high-converting business websites that help businesses grow online." />
+  <meta property="og:image" content="assets/urban-brew.jpg" />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Structured Data (JSON-LD) for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Parul Rajawat",
+    "jobTitle": "Freelance Website Developer",
+    "tagline": "Building High-Converting Business Websites",
+    "knowsAbout": ["React.js", "Next.js", "HTML5", "CSS3", "JavaScript", "Tailwind CSS", "SEO", "Web Performance"]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Loading Animation Overlay -->
+  <div id="loader-overlay" class="loader-overlay">
+    <div class="loader-content">
+      <div class="loader-logo">PR</div>
+      <div class="loader-spinner"></div>
+      <span class="loader-text">Loading Experience...</span>
+    </div>
+  </div>
+
+  <!-- Ambient Canvas Background -->
+  <canvas id="bg-canvas" class="bg-canvas"></canvas>
+
+  <!-- Dynamic Glowing Orbs -->
+  <div class="ambient-orb orb-1"></div>
+  <div class="ambient-orb orb-2"></div>
+  <div class="ambient-orb orb-3"></div>
+
+  <!-- Header / Navigation -->
+  <header class="navbar-wrapper">
+    <nav class="navbar glass-card">
+      <a href="#hero" class="nav-logo" id="nav-brand">
+        <span class="logo-accent">Parul</span> Rajawat
+      </a>
+      
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#why-me" class="nav-link">Why Choose Me</a></li>
+        <li><a href="#tech-stack" class="nav-link">Tech Stack</a></li>
+        <li><a href="#workflow" class="nav-link">Workflow</a></li>
+        <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#contact" class="btn btn-primary btn-nav">
+          <span>Hire Me</span>
+          <i data-lucide="arrow-up-right"></i>
+        </a>
+        <button id="mobile-toggle" class="mobile-toggle" aria-label="Toggle navigation menu">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 1. HERO SECTION -->
+    <section id="hero" class="hero-section">
+      <div class="container hero-container">
+        <div class="hero-badge fade-up">
+          <span class="status-dot"></span>
+          <span>Available for New Projects & Freelance Contracts</span>
+        </div>
+
+        <h1 class="hero-title fade-up delay-1">
+          I Build <span class="gradient-text">Modern Websites</span> That Help Businesses Grow Online.
+        </h1>
+
+        <p class="hero-subtitle fade-up delay-2">
+          High-Converting Business Websites for Digital Marketing Agencies, Business Owners, Startups and Local Businesses.
+        </p>
+
+        <div class="hero-ctas fade-up delay-3">
+          <a href="#portfolio" class="btn btn-primary btn-lg">
+            <i data-lucide="layout"></i>
+            <span>View Portfolio</span>
+          </a>
+          <a href="#contact" class="btn btn-glass btn-lg">
+            <i data-lucide="sparkles"></i>
+            <span>Hire Me</span>
+          </a>
+        </div>
+
+        <!-- Animated Stats Counter Bar -->
+        <div class="hero-stats glass-card fade-up delay-4">
+          <div class="stat-item">
+            <div class="stat-number"><span class="counter" data-target="50">0</span>+</div>
+            <div class="stat-label">Projects Completed</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-number"><span class="counter" data-target="99">0</span>.8%</div>
+            <div class="stat-label">Client Satisfaction</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-number"><span class="counter" data-target="3">0</span>x</div>
+            <div class="stat-label">Average Conversion Boost</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-number"><span class="counter" data-target="4">0</span>+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. ABOUT ME SECTION -->
+    <section id="about" class="section about-section">
+      <div class="container">
+        <div class="section-header text-center fade-up">
+          <span class="section-tag">About Me</span>
+          <h2 class="section-title">Crafting <span class="gradient-text">Digital Excellence</span></h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card main-about glass-card fade-up">
+            <div class="about-avatar-wrapper">
+              <div class="avatar-ring"></div>
+              <div class="avatar-initials">PR</div>
+            </div>
+            <div class="about-bio">
+              <h3>Hello, I'm <span class="gradient-text">Parul Rajawat</span></h3>
+              <p class="tagline-badge">Building High-Converting Business Websites</p>
+              <p class="bio-text">
+                I specialize in building fast, modern, and fully responsive websites tailored specifically for local businesses, digital marketing agencies, and scaling startups. By leveraging cutting-edge web technologies like <strong>React.js, Next.js, HTML5, CSS3, JavaScript (ES6+), and Tailwind CSS</strong>, I transform brand visions into high-converting digital storefronts.
+              </p>
+              <p class="bio-text">
+                My core focus is on combining high-end luxury aesthetics with pixel-perfect responsive design, blistering page speed performance, and SEO optimization to ensure your business stands out and drives measurable revenue growth.
+              </p>
+
+              <div class="about-highlights">
+                <div class="highlight-item">
+                  <i data-lucide="zap" class="highlight-icon"></i>
+                  <div>
+                    <h4>Lightning Fast Loading</h4>
+                    <p>Sub-second load times & 95+ Lighthouse scores</p>
+                  </div>
+                </div>
+                <div class="highlight-item">
+                  <i data-lucide="smartphone" class="highlight-icon"></i>
+                  <div>
+                    <h4>Mobile-First Responsive</h4>
+                    <p>Flawless experience across phones, tablets & desktops</p>
+                  </div>
+                </div>
+                <div class="highlight-item">
+                  <i data-lucide="trending-up" class="highlight-icon"></i>
+                  <div>
+                    <h4>Conversion Optimized</h4>
+                    <p>Designed to convert visitors into paying clients</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-side-cards">
+            <div class="glass-card side-card fade-up delay-1">
+              <i data-lucide="target" class="side-card-icon"></i>
+              <h4>Target Audience Specialization</h4>
+              <ul class="target-list">
+                <li><i data-lucide="check-circle-2"></i> Digital Marketing Agencies</li>
+                <li><i data-lucide="check-circle-2"></i> Local Business Owners</li>
+                <li><i data-lucide="check-circle-2"></i> Tech & SaaS Startups</li>
+                <li><i data-lucide="check-circle-2"></i> Professional Service Providers</li>
+              </ul>
+            </div>
+
+            <div class="glass-card side-card feature-badge-card fade-up delay-2">
+              <div class="experience-badge">
+                <span class="badge-num">100%</span>
+                <span class="badge-text">Client Commitment & Direct Communication</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. FEATURED PORTFOLIO SECTION -->
+    <section id="portfolio" class="section portfolio-section">
+      <div class="container">
+        <div class="section-header text-center fade-up">
+          <span class="section-tag">Selected Works</span>
+          <h2 class="section-title">Featured <span class="gradient-text">Portfolio</span></h2>
+          <p class="section-subtitle">Explore 4 custom-crafted premium business websites designed for maximum impact.</p>
+        </div>
+
+        <div class="portfolio-grid">
+          
+          <!-- Project 1: Cafe Website -->
+          <article class="project-card glass-card fade-up">
+            <div class="project-media">
+              <div class="project-badge">☕ Cafe Website</div>
+              <img src="assets/urban-brew.jpg" alt="Urban Brew Cafe Website Preview" class="project-image" loading="lazy" />
+              <div class="project-overlay">
+                <button class="btn btn-primary btn-sm open-demo-btn" data-project="urban-brew">
+                  <i data-lucide="play"></i> Live Demo Preview
+                </button>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <h3 class="project-title">Urban Brew Cafe</h3>
+              <p class="project-description">
+                Premium cafe website with menu, gallery, reservations, Google Maps, online enquiry and Instagram integration.
+              </p>
+              
+              <div class="project-tech">
+                <span class="tech-pill">HTML5</span>
+                <span class="tech-pill">CSS3</span>
+                <span class="tech-pill">JavaScript</span>
+                <span class="tech-pill">Google Maps API</span>
+              </div>
+
+              <div class="project-actions">
+                <button class="btn btn-primary btn-sm open-demo-btn" data-project="urban-brew">
+                  <i data-lucide="external-link"></i> Live Demo
+                </button>
+                <button class="btn btn-glass btn-sm open-code-btn" data-project="urban-brew">
+                  <i data-lucide="code-2"></i> Source Code
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2: Coaching Institute Website -->
+          <article class="project-card glass-card fade-up delay-1">
+            <div class="project-media">
+              <div class="project-badge">🎓 Coaching Website</div>
+              <div class="svg-mockup coaching-mockup">
+                <div class="mockup-header">
+                  <div class="mockup-dots"><span></span><span></span><span></span></div>
+                  <div class="mockup-url">impactcoaching.com</div>
+                </div>
+                <div class="mockup-body">
+                  <div class="mockup-hero">
+                    <span class="mock-tag">Top Ranked Institute</span>
+                    <h4>Impact Coaching Institute</h4>
+                    <p>Empowering Students to Achieve Top Ranks</p>
+                    <div class="mock-btn">Explore Courses</div>
+                  </div>
+                  <div class="mockup-grid">
+                    <div class="mock-box">JEE Main & Advanced</div>
+                    <div class="mock-box">NEET Medical Prep</div>
+                    <div class="mock-box">Foundation Courses</div>
+                  </div>
+                </div>
+              </div>
+              <div class="project-overlay">
+                <button class="btn btn-primary btn-sm open-demo-btn" data-project="impact-coaching">
+                  <i data-lucide="play"></i> Live Demo Preview
+                </button>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <h3 class="project-title">Impact Coaching Institute</h3>
+              <p class="project-description">
+                Admission forms, courses, faculty, results, student testimonials, online enquiry and responsive design.
+              </p>
+              
+              <div class="project-tech">
+                <span class="tech-pill">React.js</span>
+                <span class="tech-pill">Tailwind CSS</span>
+                <span class="tech-pill">Form Validation</span>
+              </div>
+
+              <div class="project-actions">
+                <button class="btn btn-primary btn-sm open-demo-btn" data-project="impact-coaching">
+                  <i data-lucide="external-link"></i> Live Demo
+                </button>
+                <button class="btn btn-glass btn-sm open-code-btn" data-project="impact-coaching">
+                  <i data-lucide="code-2"></i> Source Code
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3: Library Website -->
+          <article class="project-card glass-card fade-up">
+            <div class="project-media">
+              <div class="project-badge">📚 Library Website</div>
+              <div class="svg-mockup library-mockup">
+                <div class="mockup-header">
+                  <div class="mockup-dots"><span></span><span></span><span></span></div>
+                  <div class="mockup-url">knowledgelibrary.org</div>
+                </div>
+                <div class="mockup-body">
+                  <div class="mockup-hero library-hero">
+                    <span class="mock-tag gold">Silent Study Haven</span>
+                    <h4>Knowledge Library</h4>
+                    <p>Digital Catalog, Membership Plans & Silent Zones</p>
+                    <div class="mock-search-bar">Search 10,000+ Books & Journals...</div>
+                  </div>
+                  <div class="mockup-grid">
+                    <div class="mock-box lib">Daily Pass ₹99</div>
+                    <div class="mock-box lib">Monthly Pro ₹999</div>
+                    <div class="mock-box lib">24/7 Access</div>
+                  </div>
+                </div>
+              </div>
+              <div class="project-overlay">
+                <button class="btn btn-primary btn-sm open-demo-btn" data-project="knowledge-library">
+                  <i data-lucide="play"></i> Live Demo Preview
+                </button>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <h3 class="project-title">Knowledge Library</h3>
+              <p class="project-description">
+                Membership plans, digital catalog, timings, gallery, events and contact system.
+              </p>
+              
+              <div class="project-tech">
+                <span class="tech-pill">Next.js</span>
+                <span class="tech-pill">JavaScript</span>
+                <span class="tech-pill">CSS Modules</span>
+              </div>
+
+              <div class="project-actions">
+                <button class="btn btn-primary btn-sm open-demo-btn" data-project="knowledge-library">
+                  <i data-lucide="external-link"></i> Live Demo
+                </button>
+                <button class="btn btn-glass btn-sm open-code-btn" data-project="knowledge-library">
+                  <i data-lucide="code-2"></i> Source Code
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 4: Gym Website -->
+          <article class="project-card glass-card fade-up delay-1">
+            <div class="project-media">
+              <div class="project-badge">🏋 Gym Website</div>
+              <div class="svg-mockup gym-mockup">
+                <div class="mockup-header">
+                  <div class="mockup-dots"><span></span><span></span><span></span></div>
+                  <div class="mockup-url">titanfitness.com</div>
+                </div>
+                <div class="mockup-body">
+                  <div class="mockup-hero gym-hero">
+                    <span class="mock-tag red">Unleash Your Beast</span>
+                    <h4>Titan Fitness Club</h4>
+                    <p>Elite Trainers • Interactive BMI Calculator • 24/7 Gym</p>
+                    <div class="mock-btn red-btn">Get 3-Day Free Trial</div>
+                  </div>
+                  <div class="mockup-grid">
+                    <div class="mock-box gym">Personal Training</div>
+                    <div class="mock-box gym">BMI Calculator</div>
+                    <div class="mock-box gym">Transformations</div>
+                  </div>
+                </div>
+              </div>
+              <div class="project-overlay">
+                <button class="btn btn-primary btn-sm open-demo-btn" data-project="titan-fitness">
+                  <i data-lucide="play"></i> Live Demo Preview
+                </button>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <h3 class="project-title">Titan Fitness Club</h3>
+              <p class="project-description">
+                Membership plans, trainers, BMI calculator, transformation gallery, online registration and contact page.
+              </p>
+              
+              <div class="project-tech">
+                <span class="tech-pill">React.js</span>
+                <span class="tech-pill">Tailwind CSS</span>
+                <span class="tech-pill">Interactive BMI Engine</span>
+              </div>
+
+              <div class="project-actions">
+                <button class="btn btn-primary btn-sm open-demo-btn" data-project="titan-fitness">
+                  <i data-lucide="external-link"></i> Live Demo
+                </button>
+                <button class="btn btn-glass btn-sm open-code-btn" data-project="titan-fitness">
+                  <i data-lucide="code-2"></i> Source Code
+                </button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. SERVICES SECTION -->
+    <section id="services" class="section services-section">
+      <div class="container">
+        <div class="section-header text-center fade-up">
+          <span class="section-tag">Services</span>
+          <h2 class="section-title">High-Impact <span class="gradient-text">Web Solutions</span></h2>
+          <p class="section-subtitle">Tailored website services engineered to boost engagement and maximize revenue.</p>
+        </div>
+
+        <div class="services-grid">
+          
+          <div class="service-card glass-card fade-up">
+            <div class="service-icon-wrapper">
+              <i data-lucide="globe"></i>
+            </div>
+            <h3>Business Websites</h3>
+            <p>Custom multi-page websites built for corporate branding, local businesses, and agencies with CMS capability.</p>
+            <ul class="service-features">
+              <li><i data-lucide="check"></i> Custom Brand Design</li>
+              <li><i data-lucide="check"></i> Contact & Booking Forms</li>
+              <li><i data-lucide="check"></i> Google Maps & Reviews</li>
+            </ul>
+          </div>
+
+          <div class="service-card glass-card fade-up delay-1">
+            <div class="service-icon-wrapper">
+              <i data-lucide="sparkles"></i>
+            </div>
+            <h3>Landing Pages</h3>
+            <p>Ultra-focused, high-converting landing pages built for marketing campaigns, product launches, and lead gen.</p>
+            <ul class="service-features">
+              <li><i data-lucide="check"></i> Persuasive Copy Structure</li>
+              <li><i data-lucide="check"></i> High-Speed Lead Forms</li>
+              <li><i data-lucide="check"></i> A/B Test Ready</li>
+            </ul>
+          </div>
+
+          <div class="service-card glass-card fade-up delay-2">
+            <div class="service-icon-wrapper">
+              <i data-lucide="refresh-cw"></i>
+            </div>
+            <h3>Website Redesign</h3>
+            <p>Transform your outdated legacy website into a sleek, Apple-inspired modern experience that turns heads.</p>
+            <ul class="service-features">
+              <li><i data-lucide="check"></i> Modern UI/UX Upgrade</li>
+              <li><i data-lucide="check"></i> Mobile Optimization</li>
+              <li><i data-lucide="check"></i> Zero Downtime Migration</li>
+            </ul>
+          </div>
+
+          <div class="service-card glass-card fade-up">
+            <div class="service-icon-wrapper">
+              <i data-lucide="smartphone"></i>
+            </div>
+            <h3>Responsive Web Development</h3>
+            <p>Flawless user experiences engineered for all viewports from 320px mobile screens to 4K desktop displays.</p>
+            <ul class="service-features">
+              <li><i data-lucide="check"></i> Mobile-First Architecture</li>
+              <li><i data-lucide="check"></i> Touch-Friendly Controls</li>
+              <li><i data-lucide="check"></i> Cross-Browser Tested</li>
+            </ul>
+          </div>
+
+          <div class="service-card glass-card fade-up delay-1">
+            <div class="service-icon-wrapper">
+              <i data-lucide="shield-check"></i>
+            </div>
+            <h3>Website Maintenance</h3>
+            <p>Keep your website secure, updated, and performing at its peak with continuous technical updates and backups.</p>
+            <ul class="service-features">
+              <li><i data-lucide="check"></i> Security & Core Updates</li>
+              <li><i data-lucide="check"></i> Weekly Cloud Backups</li>
+              <li><i data-lucide="check"></i> Priority Content Tweaks</li>
+            </ul>
+          </div>
+
+          <div class="service-card glass-card fade-up delay-2">
+            <div class="service-icon-wrapper">
+              <i data-lucide="gauge"></i>
+            </div>
+            <h3>Performance Optimization</h3>
+            <p>Blistering fast page load optimization to achieve 90+ Lighthouse scores and reduce bounce rates drastically.</p>
+            <ul class="service-features">
+              <li><i data-lucide="check"></i> Asset & Image Compression</li>
+              <li><i data-lucide="check"></i> Code Splitting & Minification</li>
+              <li><i data-lucide="check"></i> Core Web Vitals Fixes</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. WHY CHOOSE ME SECTION -->
+    <section id="why-me" class="section why-me-section">
+      <div class="container">
+        <div class="section-header text-center fade-up">
+          <span class="section-tag">The Advantage</span>
+          <h2 class="section-title">Why Choose <span class="gradient-text">Parul Rajawat</span></h2>
+          <p class="section-subtitle">Dedicated to delivering unmatched value, aesthetics, and revenue results for your brand.</p>
+        </div>
+
+        <div class="why-grid">
+          <div class="why-card glass-card fade-up">
+            <div class="why-number">01</div>
+            <i data-lucide="palette" class="why-icon"></i>
+            <h3>Modern UI/UX</h3>
+            <p>Luxurious, intuitive designs inspired by top global tech brands that wow visitors instantly.</p>
+          </div>
+
+          <div class="why-card glass-card fade-up delay-1">
+            <div class="why-number">02</div>
+            <i data-lucide="search" class="why-icon"></i>
+            <h3>SEO Friendly</h3>
+            <p>Built-in schema markup, meta tags, and semantic structure to rank higher on Google search.</p>
+          </div>
+
+          <div class="why-card glass-card fade-up delay-2">
+            <div class="why-number">03</div>
+            <i data-lucide="smartphone" class="why-icon"></i>
+            <h3>Mobile Responsive</h3>
+            <p>Fluid, touch-optimized layouts engineered to look perfect on every smartphone & tablet.</p>
+          </div>
+
+          <div class="why-card glass-card fade-up">
+            <div class="why-number">04</div>
+            <i data-lucide="zap" class="why-icon"></i>
+            <h3>Fast Loading</h3>
+            <p>Clean code architecture ensuring sub-second response times and minimal payload.</p>
+          </div>
+
+          <div class="why-card glass-card fade-up delay-1">
+            <div class="why-number">05</div>
+            <i data-lucide="code" class="why-icon"></i>
+            <h3>Clean Code</h3>
+            <p>Maintainable, modular codebases following modern web standards and best practices.</p>
+          </div>
+
+          <div class="why-card glass-card fade-up delay-2">
+            <div class="why-number">06</div>
+            <i data-lucide="award" class="why-icon"></i>
+            <h3>Professional Design</h3>
+            <p>Pixel-perfect typography, harmonious color palettes, and glassmorphism micro-details.</p>
+          </div>
+
+          <div class="why-card glass-card fade-up">
+            <div class="why-number">07</div>
+            <i data-lucide="dollar-sign" class="why-icon"></i>
+            <h3>Affordable Pricing</h3>
+            <p>Agency-grade website quality at transparent, competitive freelance rates.</p>
+          </div>
+
+          <div class="why-card glass-card fade-up delay-1">
+            <div class="why-number">08</div>
+            <i data-lucide="headphones" class="why-icon"></i>
+            <h3>Ongoing Support</h3>
+            <p>Dedicated post-launch technical assistance, updates, and maintenance support.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. TECH STACK SECTION -->
+    <section id="tech-stack" class="section tech-section">
+      <div class="container">
+        <div class="section-header text-center fade-up">
+          <span class="section-tag">Technology</span>
+          <h2 class="section-title">Modern <span class="gradient-text">Tech Stack</span></h2>
+          <p class="section-subtitle">I leverage industry-standard tools and frameworks to engineer high-performing applications.</p>
+        </div>
+
+        <div class="tech-filter-buttons fade-up">
+          <button class="tech-filter-btn active" data-filter="all">All Tools</button>
+          <button class="tech-filter-btn" data-filter="frontend">Frontend Core</button>
+          <button class="tech-filter-btn" data-filter="frameworks">Frameworks</button>
+          <button class="tech-filter-btn" data-filter="tools">Workflow & Deployment</button>
+        </div>
+
+        <div class="tech-grid">
+          
+          <div class="tech-card glass-card fade-up" data-category="frontend">
+            <div class="tech-icon-box html-icon">
+              <i data-lucide="code"></i>
+            </div>
+            <h4>HTML5</h4>
+            <span class="tech-level">Semantic Structure & SEO</span>
+          </div>
+
+          <div class="tech-card glass-card fade-up delay-1" data-category="frontend">
+            <div class="tech-icon-box css-icon">
+              <i data-lucide="paint-bucket"></i>
+            </div>
+            <h4>CSS3</h4>
+            <span class="tech-level">Glassmorphism & Keyframes</span>
+          </div>
+
+          <div class="tech-card glass-card fade-up delay-2" data-category="frontend">
+            <div class="tech-icon-box js-icon">
+              <i data-lucide="terminal"></i>
+            </div>
+            <h4>JavaScript</h4>
+            <span class="tech-level">ES6+, Async, DOM Manipulation</span>
+          </div>
+
+          <div class="tech-card glass-card fade-up" data-category="frameworks">
+            <div class="tech-icon-box react-icon">
+              <i data-lucide="atom"></i>
+            </div>
+            <h4>React.js</h4>
+            <span class="tech-level">Component Architecture</span>
+          </div>
+
+          <div class="tech-card glass-card fade-up delay-1" data-category="frameworks">
+            <div class="tech-icon-box next-icon">
+              <i data-lucide="layers"></i>
+            </div>
+            <h4>Next.js</h4>
+            <span class="tech-level">SSR & Static Site Generation</span>
+          </div>
+
+          <div class="tech-card glass-card fade-up delay-2" data-category="frameworks">
+            <div class="tech-icon-box tailwind-icon">
+              <i data-lucide="wind"></i>
+            </div>
+            <h4>Tailwind CSS</h4>
+            <span class="tech-level">Utility-First Design</span>
+          </div>
+
+          <div class="tech-card glass-card fade-up" data-category="tools">
+            <div class="tech-icon-box git-icon">
+              <i data-lucide="git-branch"></i>
+            </div>
+            <h4>Git</h4>
+            <span class="tech-level">Version Control</span>
+          </div>
+
+          <div class="tech-card glass-card fade-up delay-1" data-category="tools">
+            <div class="tech-icon-box github-icon">
+              <i data-lucide="github"></i>
+            </div>
+            <h4>GitHub</h4>
+            <span class="tech-level">Code Repositories</span>
+          </div>
+
+          <div class="tech-card glass-card fade-up delay-2" data-category="tools">
+            <div class="tech-icon-box vercel-icon">
+              <i data-lucide="globe-2"></i>
+            </div>
+            <h4>Vercel</h4>
+            <span class="tech-level">CI/CD Global Deployment</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. CLIENT WORKFLOW SECTION -->
+    <section id="workflow" class="section workflow-section">
+      <div class="container">
+        <div class="section-header text-center fade-up">
+          <span class="section-tag">Process</span>
+          <h2 class="section-title">Seamless <span class="gradient-text">Client Workflow</span></h2>
+          <p class="section-subtitle">A transparent 6-step journey from initial concept to live production launch.</p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-line"></div>
+
+          <div class="timeline-step fade-up">
+            <div class="step-number">1</div>
+            <div class="step-card glass-card">
+              <i data-lucide="search" class="step-icon"></i>
+              <h3>Discovery</h3>
+              <p>We analyze your business goals, target audience, brand identity, and key functional requirements.</p>
+              <span class="step-deliverable">Deliverable: Project Brief & Sitemap</span>
+            </div>
+          </div>
+
+          <div class="timeline-step fade-up delay-1">
+            <div class="step-number">2</div>
+            <div class="step-card glass-card">
+              <i data-lucide="compass" class="step-icon"></i>
+              <h3>Planning</h3>
+              <p>Structuring the website architecture, content strategy, user flow, and milestone timelines.</p>
+              <span class="step-deliverable">Deliverable: Wireframes & Technical Spec</span>
+            </div>
+          </div>
+
+          <div class="timeline-step fade-up">
+            <div class="step-number">3</div>
+            <div class="step-card glass-card">
+              <i data-lucide="figma" class="step-icon"></i>
+              <h3>Design</h3>
+              <p>Creating high-fidelity Apple-inspired UI designs with typography, glassmorphism, and color palettes.</p>
+              <span class="step-deliverable">Deliverable: Interactive Prototype</span>
+            </div>
+          </div>
+
+          <div class="timeline-step fade-up delay-1">
+            <div class="step-number">4</div>
+            <div class="step-card glass-card">
+              <i data-lucide="code-2" class="step-icon"></i>
+              <h3>Development</h3>
+              <p>Writing clean, semantic, responsive code using React, Next.js, and CSS animations.</p>
+              <span class="step-deliverable">Deliverable: Staging Link Preview</span>
+            </div>
+          </div>
+
+          <div class="timeline-step fade-up">
+            <div class="step-number">5</div>
+            <div class="step-card glass-card">
+              <i data-lucide="check-square" class="step-icon"></i>
+              <h3>Testing</h3>
+              <p>Rigorously testing speed, cross-device responsiveness, form submissions, and SEO readiness.</p>
+              <span class="step-deliverable">Deliverable: QA Report & Speed Audit</span>
+            </div>
+          </div>
+
+          <div class="timeline-step fade-up delay-1">
+            <div class="step-number">6</div>
+            <div class="step-card glass-card">
+              <i data-lucide="rocket" class="step-icon"></i>
+              <h3>Launch</h3>
+              <p>Deploying the website to high-speed global CDN (Vercel), domain setup, and handoff training.</p>
+              <span class="step-deliverable">Deliverable: Live Website & Support Access</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. TESTIMONIALS SECTION -->
+    <section id="testimonials" class="section testimonials-section">
+      <div class="container">
+        <div class="section-header text-center fade-up">
+          <span class="section-tag">Client Reviews</span>
+          <h2 class="section-title">What Clients <span class="gradient-text">Say About Me</span></h2>
+          <p class="section-subtitle">Real feedback from business owners, agency directors, and startup founders.</p>
+        </div>
+
+        <div class="testimonials-grid">
+          
+          <div class="testimonial-card glass-card fade-up">
+            <div class="stars">
+              <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
+            </div>
+            <p class="testimonial-quote">
+              "Parul built our cafe's website with online reservations and an Instagram feed integration. Our table bookings increased by 40% in the first month alone!"
+            </p>
+            <div class="client-info">
+              <div class="client-avatar">VK</div>
+              <div>
+                <h4 class="client-name">Vikram Kapoor</h4>
+                <p class="client-role">Founder, Urban Brew Cafe</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card glass-card fade-up delay-1">
+            <div class="stars">
+              <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
+            </div>
+            <p class="testimonial-quote">
+              "Working with Parul was seamless. She created our coaching institute website with online inquiry forms. The design looks like an elite Ivy League portal."
+            </p>
+            <div class="client-info">
+              <div class="client-avatar">AS</div>
+              <div>
+                <h4 class="client-name">Ananya Sharma</h4>
+                <p class="client-role">Director, Impact Coaching Institute</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card glass-card fade-up delay-2">
+            <div class="stars">
+              <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
+            </div>
+            <p class="testimonial-quote">
+              "Our gym's online signups doubled after Parul added the interactive BMI calculator feature to our site. Highly recommended freelance web developer!"
+            </p>
+            <div class="client-info">
+              <div class="client-avatar">RM</div>
+              <div>
+                <h4 class="client-name">Rohan Mehta</h4>
+                <p class="client-role">Head Trainer, Titan Fitness Club</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. CONTACT SECTION -->
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <div class="section-header text-center fade-up">
+          <span class="section-tag">Let's Connect</span>
+          <h2 class="section-title">Start Your <span class="gradient-text">Project Today</span></h2>
+          <p class="section-subtitle">Have a project in mind or need a custom web solution? Get in touch with me directly.</p>
+        </div>
+
+        <div class="contact-grid">
+          
+          <!-- Direct Communication Channels -->
+          <div class="contact-info-column">
+            <div class="contact-info-card glass-card fade-up">
+              <h3>Direct Communication</h3>
+              <p>Choose your preferred channel to discuss project scope, pricing, or technical questions.</p>
+
+              <div class="direct-buttons">
+                <a href="https://wa.me/919876543210?text=Hi%20Parul,%20I'd%20like%20to%20discuss%20a%20website%20project!" target="_blank" class="contact-btn whatsapp-btn">
+                  <i data-lucide="message-circle"></i>
+                  <div class="btn-text-content">
+                    <span class="btn-title">Chat on WhatsApp</span>
+                    <span class="btn-sub">+91 98765 43210</span>
+                  </div>
+                </a>
+
+                <a href="mailto:contact@parulrajawat.com?subject=Website%20Project%20Inquiry" class="contact-btn email-btn">
+                  <i data-lucide="mail"></i>
+                  <div class="btn-text-content">
+                    <span class="btn-title">Send an Email</span>
+                    <span class="btn-sub">contact@parulrajawat.com</span>
+                  </div>
+                </a>
+
+                <a href="https://linkedin.com/in/parulrajawat" target="_blank" class="contact-btn linkedin-btn">
+                  <i data-lucide="linkedin"></i>
+                  <div class="btn-text-content">
+                    <span class="btn-title">Connect on LinkedIn</span>
+                    <span class="btn-sub">linkedin.com/in/parulrajawat</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div class="glass-card response-guarantee-card fade-up delay-1">
+              <i data-lucide="clock" class="guarantee-icon"></i>
+              <div>
+                <h4>Fast Response Guarantee</h4>
+                <p>I typically respond to inquiries within 2 hours during business working hours.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Professional Contact Form -->
+          <div class="contact-form-card glass-card fade-up delay-1">
+            <form id="contact-form" class="contact-form">
+              <div class="form-group">
+                <label for="name">Your Full Name *</label>
+                <input type="text" id="name" name="name" placeholder="John Doe" required />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" placeholder="john@example.com" required />
+              </div>
+
+              <div class="form-group">
+                <label for="service-type">Website Service Required *</label>
+                <select id="service-type" name="service" required>
+                  <option value="" disabled selected>Select Service...</option>
+                  <option value="business">Business Website</option>
+                  <option value="landing">Landing Page</option>
+                  <option value="redesign">Website Redesign</option>
+                  <option value="responsive">Responsive Development</option>
+                  <option value="maintenance">Website Maintenance</option>
+                  <option value="optimization">Performance Optimization</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Project Details / Requirements *</label>
+                <textarea id="message" name="message" rows="4" placeholder="Tell me about your business goals, timeline, and features needed..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block">
+                <span>Send Project Request</span>
+                <i data-lucide="send"></i>
+              </button>
+
+              <div id="form-feedback" class="form-feedback"></div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 10. FOOTER -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <a href="#hero" class="footer-logo">
+          <span class="logo-accent">Parul</span> Rajawat
+        </a>
+        <p class="footer-tagline">Building High-Converting Business Websites</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About Me</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#tech-stack">Tech Stack</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-socials">
+        <h4>Connect</h4>
+        <div class="social-icons">
+          <a href="https://github.com" target="_blank" aria-label="GitHub"><i data-lucide="github"></i></a>
+          <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+          <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+          <a href="https://wa.me/919876543210" target="_blank" aria-label="WhatsApp"><i data-lucide="message-circle"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-flex">
+        <p>&copy; 2026 Parul Rajawat. All Rights Reserved. Crafted with Precision.</p>
+        <a href="#hero" class="back-to-top" id="back-to-top" aria-label="Back to top">
+          <i data-lucide="arrow-up"></i> Top
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- DYNAMIC INTERACTIVE PROJECT DEMO MODAL -->
+  <div id="project-modal" class="modal-backdrop">
+    <div class="modal-card glass-card">
+      <button id="close-modal-btn" class="close-modal-btn" aria-label="Close modal">
+        <i data-lucide="x"></i>
+      </button>
+
+      <div id="modal-content-area" class="modal-content-area">
+        <!-- Content dynamically injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="js/main.js"></script>
+</body>
+</html>

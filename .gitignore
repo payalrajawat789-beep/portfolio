@@ -1,0 +1,27 @@
+# Dependencies & build outputs
+node_modules/
+.next/
+dist/
+build/
+out/
+
+# Environment & local secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS System Files
+.DS_Store
+Thumbs.db
+
+# Vercel & Antigravity temp logs
+.vercel
+*.log
