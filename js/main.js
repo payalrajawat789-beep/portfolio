@@ -41,6 +41,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // 10. Interactive Project Demos & Modals (including BMI Calculator)
   initProjectModals();
 
+  // 11. PDF Resume Download Handler
+  initPdfDownload();
+
 });
 
 /* ==========================================================================
@@ -277,6 +280,21 @@ function initContactForm() {
       if (window.lucide) lucide.createIcons();
     }, 1200);
   });
+}
+
+/* ==========================================================================
+   PDF RESUME DOWNLOAD HANDLER
+   ========================================================================== */
+function initPdfDownload() {
+  const navBtn = document.getElementById('download-pdf-nav');
+  const heroBtn = document.getElementById('download-pdf-hero');
+
+  const triggerDownload = () => {
+    window.print();
+  };
+
+  if (navBtn) navBtn.addEventListener('click', triggerDownload);
+  if (heroBtn) heroBtn.addEventListener('click', triggerDownload);
 }
 
 /* ==========================================================================
