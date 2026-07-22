@@ -35,14 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // 8. Tech Stack Category Filter
   initTechFilter();
 
-  // 9. Contact Form Handling & Validation
+  // 9. Contact Form Direct Email Submission to payalrajawat789@gmail.com
   initContactForm();
 
   // 10. Interactive Project Demos & Modals (including BMI Calculator)
   initProjectModals();
-
-  // 11. PDF Resume Download Handler
-  initPdfDownload();
 
 });
 
@@ -238,7 +235,7 @@ function initTechFilter() {
 }
 
 /* ==========================================================================
-   CONTACT FORM HANDLING
+   DIRECT EMAIL FORM SUBMISSION (Dispatches to payalrajawat789@gmail.com)
    ========================================================================== */
 function initContactForm() {
   const form = document.getElementById('contact-form');
@@ -246,7 +243,7 @@ function initContactForm() {
 
   if (!form || !feedback) return;
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const name = form.name.value.trim();
@@ -264,37 +261,50 @@ function initContactForm() {
       return;
     }
 
-    // Simulate successful submission
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
 
     submitBtn.disabled = true;
-    submitBtn.innerHTML = `<span>Sending...</span>`;
+    submitBtn.innerHTML = `<span>Sending Email...</span>`;
 
-    setTimeout(() => {
+    try {
+      // Send Form Data via FormSubmit API directly to payalrajawat789@gmail.com
+      const response = await fetch('https://formsubmit.co/ajax/payalrajawat789@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          _subject: `New Project Inquiry from ${name} (${service})`,
+          "Client Name": name,
+          "Client Email": email,
+          "Requested Service": service,
+          "Project Message": message
+        })
+      });
+
+      if (response.ok || response.status === 200) {
+        feedback.className = 'form-feedback success';
+        feedback.innerHTML = `<strong>Thank you, ${name}!</strong> Your request has been sent directly to Parul's inbox (<code>payalrajawat789@gmail.com</code>). She will contact you within 2 hours.`;
+        form.reset();
+      } else {
+        // Fallback to mailto link if API block
+        window.location.href = `mailto:payalrajawat789@gmail.com?subject=Project Inquiry - ${encodeURIComponent(name)}&body=Name: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0AService: ${encodeURIComponent(service)}%0AMessage: ${encodeURIComponent(message)}`;
+        feedback.className = 'form-feedback success';
+        feedback.innerHTML = `Opening your email client to send message to <code>payalrajawat789@gmail.com</code>...`;
+      }
+    } catch (err) {
+      // Fallback
+      window.location.href = `mailto:payalrajawat789@gmail.com?subject=Project Inquiry - ${encodeURIComponent(name)}&body=Name: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0AService: ${encodeURIComponent(service)}%0AMessage: ${encodeURIComponent(message)}`;
       feedback.className = 'form-feedback success';
-      feedback.innerHTML = `<strong>Thank you, ${name}!</strong> Your message has been received. Parul will get back to you at ${email} or via phone within 2 hours.`;
-      form.reset();
+      feedback.innerHTML = `Thank you ${name}! Direct mailto link opened for <code>payalrajawat789@gmail.com</code>.`;
+    } finally {
       submitBtn.disabled = false;
       submitBtn.innerHTML = originalText;
       if (window.lucide) lucide.createIcons();
-    }, 1200);
+    }
   });
-}
-
-/* ==========================================================================
-   PDF RESUME DOWNLOAD HANDLER
-   ========================================================================== */
-function initPdfDownload() {
-  const navBtn = document.getElementById('download-pdf-nav');
-  const heroBtn = document.getElementById('download-pdf-hero');
-
-  const triggerDownload = () => {
-    window.print();
-  };
-
-  if (navBtn) navBtn.addEventListener('click', triggerDownload);
-  if (heroBtn) heroBtn.addEventListener('click', triggerDownload);
 }
 
 /* ==========================================================================

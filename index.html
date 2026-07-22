@@ -78,10 +78,6 @@
       </ul>
 
       <div class="nav-actions">
-        <button id="download-pdf-nav" class="btn btn-glass btn-sm btn-pdf-nav" title="Download Portfolio PDF">
-          <i data-lucide="download"></i>
-          <span>PDF Resume</span>
-        </button>
         <a href="#contact" class="btn btn-primary btn-nav">
           <span>Hire Me</span>
           <i data-lucide="arrow-up-right"></i>
@@ -115,10 +111,6 @@
             <i data-lucide="layout"></i>
             <span>View Portfolio</span>
           </a>
-          <button id="download-pdf-hero" class="btn btn-glass btn-lg">
-            <i data-lucide="file-text"></i>
-            <span>Download Portfolio PDF</span>
-          </button>
           <a href="#contact" class="btn btn-glass btn-lg">
             <i data-lucide="sparkles"></i>
             <span>Hire Me</span>
@@ -834,7 +826,7 @@
         <div class="section-header text-center fade-up">
           <span class="section-tag">Let's Connect</span>
           <h2 class="section-title">Start Your <span class="gradient-text">Project Today</span></h2>
-          <p class="section-subtitle">Have a project in mind or need a custom web solution? Get in touch with me directly.</p>
+          <p class="section-subtitle">Have a project in mind or need a custom web solution? Fill out the form to send an instant email to Parul.</p>
         </div>
 
         <div class="contact-grid">
@@ -881,9 +873,12 @@
             </div>
           </div>
 
-          <!-- Professional Contact Form -->
+          <!-- Professional Contact Form -> Direct Email Dispatch to payalrajawat789@gmail.com -->
           <div class="contact-form-card glass-card fade-up delay-1">
             <form id="contact-form" class="contact-form">
+              <!-- Hidden form config for email service -->
+              <input type="hidden" name="_subject" value="New Hire Request from Portfolio Website!" />
+              
               <div class="form-group">
                 <label for="name">Your Full Name *</label>
                 <input type="text" id="name" name="name" placeholder="John Doe" required />
@@ -898,12 +893,12 @@
                 <label for="service-type">Website Service Required *</label>
                 <select id="service-type" name="service" required>
                   <option value="" disabled selected>Select Service...</option>
-                  <option value="business">Business Website</option>
-                  <option value="landing">Landing Page</option>
-                  <option value="redesign">Website Redesign</option>
-                  <option value="responsive">Responsive Development</option>
-                  <option value="maintenance">Website Maintenance</option>
-                  <option value="optimization">Performance Optimization</option>
+                  <option value="Business Website">Business Website</option>
+                  <option value="Landing Page">Landing Page</option>
+                  <option value="Website Redesign">Website Redesign</option>
+                  <option value="Responsive Development">Responsive Development</option>
+                  <option value="Website Maintenance">Website Maintenance</option>
+                  <option value="Performance Optimization">Performance Optimization</option>
                 </select>
               </div>
 
@@ -913,7 +908,7 @@
               </div>
 
               <button type="submit" class="btn btn-primary btn-block">
-                <span>Send Project Request</span>
+                <span>Send Project Request to Email</span>
                 <i data-lucide="send"></i>
               </button>
 
